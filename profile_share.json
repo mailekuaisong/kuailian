@@ -1,0 +1,5360 @@
+{
+  "experimental": {
+    "clash_api": {
+      "external_controller": "",
+      "secret": ""
+    },
+    "debug": {
+      "max_threads": null,
+      "panic_on_fault": false,
+      "listen": null
+    },
+    "cache_file": {
+      "enabled": false,
+      "path": "",
+      "store_fakeip": true
+    }
+  },
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "output": "",
+    "timestamp": true
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "time.windows.com",
+    "server_port": 123,
+    "interval": "12h",
+    "detour": "direct_out"
+  },
+  "dns": {
+    "final": "dns_proxy_out",
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.20.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
+    "rules": [
+      {
+        "domain_suffix": [
+          "o4508911573663744.ingest.sentry.io"
+        ],
+        "server": "dns_direct_out",
+        "rewrite_ttl": 43200
+      },
+      {
+        "domain_suffix": [
+          "speedtest.net"
+        ],
+        "server": "dns_proxy_out",
+        "rewrite_ttl": 43200
+      },
+      {
+        "domain_suffix": [
+          "karing.app"
+        ],
+        "server": "dns_proxy_out",
+        "rewrite_ttl": 43200
+      },
+      {
+        "rule_set": [
+          "geosite:cn"
+        ],
+        "server": "dns_direct_out",
+        "rewrite_ttl": 43200
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_fakeip_out",
+        "rewrite_ttl": 1,
+        "disable_cache": true
+      }
+    ],
+    "servers": [
+      {
+        "tag": "dns_outbound_out",
+        "address": "udp://223.6.6.6",
+        "address_resolver": "dns_resolver_out",
+        "detour": "direct_out"
+      },
+      {
+        "tag": "dns_direct_out",
+        "address": "udp://223.6.6.6",
+        "address_resolver": "dns_resolver_out",
+        "detour": "direct_out"
+      },
+      {
+        "tag": "dns_proxy_out",
+        "address": "tls://223.5.5.5",
+        "address_resolver": "dns_resolver_out",
+        "detour": "urltest_out"
+      },
+      {
+        "tag": "dns_resolver_out",
+        "address": "udp://223.6.6.6",
+        "detour": "direct_out"
+      },
+      {
+        "tag": "dns_block_out",
+        "address": "rcode://success"
+      },
+      {
+        "tag": "dns_fakeip_out",
+        "address": "fakeip"
+      }
+    ],
+    "strategy": "prefer_ipv6",
+    "independent_cache": true,
+    "cache_capacity": 1024
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed_in_direct",
+      "set_system_proxy": false,
+      "listen": "127.0.0.1",
+      "listen_port": 3065,
+      "sniff": true,
+      "sniff_override_destination": false
+    },
+    {
+      "type": "mixed",
+      "tag": "mixed_in_proxy",
+      "set_system_proxy": false,
+      "listen": "127.0.0.1",
+      "listen_port": 3066,
+      "sniff": true,
+      "sniff_override_destination": false
+    },
+    {
+      "type": "mixed",
+      "tag": "mixed_in_rule",
+      "set_system_proxy": false,
+      "listen": "127.0.0.1",
+      "listen_port": 3067,
+      "sniff": true,
+      "sniff_override_destination": false
+    }
+  ],
+  "outbounds": [
+    {
+      "server": "156.238.18.0",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_0 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.1",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_1 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.2",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_2 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.3",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_3 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.4",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_4 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.5",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_5 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.6",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_6 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.7",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_7 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.8",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_8 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.9",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_9 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.10",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_10 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.11",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_11 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.12",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_12 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.13",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_13 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.14",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_14 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.15",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_15 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.16",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_16 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.17",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_17 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.18",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_18 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.19",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_19 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.20",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_20 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.21",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_21 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.22",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_22 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.23",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_23 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.24",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_24 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.25",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_25 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.26",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_26 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.27",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_27 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.28",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_28 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.29",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_29 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.30",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_30 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.31",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_31 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.32",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_32 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.33",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_33 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.34",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_34 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.35",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_35 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.36",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_36 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.37",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_37 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.38",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_38 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.39",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_39 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.40",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_40 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.41",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_41 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.42",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_42 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.43",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_43 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.44",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_44 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.45",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_45 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.46",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_46 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.47",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_47 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.48",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_48 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.49",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_49 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.50",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_50 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.51",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_51 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.52",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_52 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.53",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_53 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.54",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_54 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.55",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_55 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.56",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_56 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.57",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_57 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.58",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_58 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.59",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_59 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.60",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_60 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.61",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_61 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.62",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_62 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.63",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_63 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.64",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_64 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.65",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_65 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.66",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_66 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.67",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_67 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.68",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_68 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.69",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_69 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.70",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_70 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.71",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_71 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.72",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_72 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.73",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_73 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.74",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_74 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.75",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_75 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.76",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_76 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.77",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_77 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.78",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_78 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.79",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_79 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.80",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_80 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.81",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_81 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.82",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_82 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.83",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_83 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.84",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_84 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.85",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_85 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.86",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_86 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.87",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_87 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.88",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_88 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.89",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_89 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.90",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_90 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.91",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_91 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.92",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_92 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.93",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_93 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.94",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_94 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.95",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_95 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.96",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_96 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.97",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_97 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.98",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_98 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.99",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_99 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.100",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_100 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.101",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_101 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.102",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_102 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.103",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_103 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.104",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_104 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.105",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_105 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.106",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_106 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.107",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_107 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.108",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_108 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.109",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_109 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.110",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_110 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.111",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_111 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.112",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_112 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.113",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_113 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.114",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_114 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.115",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_115 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.116",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_116 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.117",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_117 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.118",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_118 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.119",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_119 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.120",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_120 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.121",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_121 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.122",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_122 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.123",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_123 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.124",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_124 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.125",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_125 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.126",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_126 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.127",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_127 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.128",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_128 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.129",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_129 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.130",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_130 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.131",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_131 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.132",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_132 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.133",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_133 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.134",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_134 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.135",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_135 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.136",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_136 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.137",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_137 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.138",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_138 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.139",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_139 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.140",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_140 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.141",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_141 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.142",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_142 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.143",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_143 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.144",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_144 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.145",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_145 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.146",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_146 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.147",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_147 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.148",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_148 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.149",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_149 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.150",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_150 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.151",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_151 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.152",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_152 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.153",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_153 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.154",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_154 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.155",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_155 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.156",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_156 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.157",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_157 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.158",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_158 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.159",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_159 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.160",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_160 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.161",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_161 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.162",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_162 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.163",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_163 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.164",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_164 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.165",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_165 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.166",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_166 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.167",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_167 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.168",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_168 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.169",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_169 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.170",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_170 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.171",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_171 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.172",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_172 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.173",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_173 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.174",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_174 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.175",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_175 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.176",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_176 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.177",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_177 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.178",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_178 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.179",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_179 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.180",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_180 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.181",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_181 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.182",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_182 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.183",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_183 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.184",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_184 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.185",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_185 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.186",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_186 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.187",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_187 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.188",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_188 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.189",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_189 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.190",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_190 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.191",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_191 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.192",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_192 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.193",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_193 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.194",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_194 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.195",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_195 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.196",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_196 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.197",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_197 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.198",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_198 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.199",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_199 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.200",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_200 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.201",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_201 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.202",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_202 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.203",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_203 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.204",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_204 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.205",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_205 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.206",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_206 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.207",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_207 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.208",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_208 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.209",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_209 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.210",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_210 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.211",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_211 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.212",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_212 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.213",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_213 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.214",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_214 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.215",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_215 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.216",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_216 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.217",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_217 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.218",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_218 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.219",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_219 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.220",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_220 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.221",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_221 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.222",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_222 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.223",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_223 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.224",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_224 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.225",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_225 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.226",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_226 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.227",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_227 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.228",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_228 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.229",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_229 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.230",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_230 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.231",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_231 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.232",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_232 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.233",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_233 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.234",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_234 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.235",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_235 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.236",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_236 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.237",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_237 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.238",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_238 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.239",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_239 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.240",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_240 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.241",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_241 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.242",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_242 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.243",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_243 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.244",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_244 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.245",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_245 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.246",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_246 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.247",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_247 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.248",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_248 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.249",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_249 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.250",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_250 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.251",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_251 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.252",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_252 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.253",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_253 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.254",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_254 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "server": "156.238.18.255",
+      "server_port": 8880,
+      "tag": "🇭🇰HK_255 @WangCai_8",
+      "type": "vless",
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/Telegram🇨🇳 @WangCai2 /",
+        "headers": {
+          "Host": [
+            "reedfree8mahsang2.redorg.ir"
+          ]
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "urltest",
+      "tag": "urltest_out",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "8h",
+      "interrupt_exist_connections": false,
+      "idle_timeout": "8h",
+      "outbounds": [
+        "🇭🇰HK_0 @WangCai_8",
+        "🇭🇰HK_1 @WangCai_8",
+        "🇭🇰HK_2 @WangCai_8",
+        "🇭🇰HK_3 @WangCai_8",
+        "🇭🇰HK_4 @WangCai_8",
+        "🇭🇰HK_5 @WangCai_8",
+        "🇭🇰HK_6 @WangCai_8",
+        "🇭🇰HK_7 @WangCai_8",
+        "🇭🇰HK_8 @WangCai_8",
+        "🇭🇰HK_9 @WangCai_8",
+        "🇭🇰HK_10 @WangCai_8",
+        "🇭🇰HK_11 @WangCai_8",
+        "🇭🇰HK_12 @WangCai_8",
+        "🇭🇰HK_13 @WangCai_8",
+        "🇭🇰HK_14 @WangCai_8",
+        "🇭🇰HK_15 @WangCai_8",
+        "🇭🇰HK_16 @WangCai_8",
+        "🇭🇰HK_17 @WangCai_8",
+        "🇭🇰HK_18 @WangCai_8",
+        "🇭🇰HK_19 @WangCai_8",
+        "🇭🇰HK_20 @WangCai_8",
+        "🇭🇰HK_21 @WangCai_8",
+        "🇭🇰HK_22 @WangCai_8",
+        "🇭🇰HK_23 @WangCai_8",
+        "🇭🇰HK_24 @WangCai_8",
+        "🇭🇰HK_25 @WangCai_8",
+        "🇭🇰HK_26 @WangCai_8",
+        "🇭🇰HK_27 @WangCai_8",
+        "🇭🇰HK_28 @WangCai_8",
+        "🇭🇰HK_29 @WangCai_8",
+        "🇭🇰HK_30 @WangCai_8",
+        "🇭🇰HK_31 @WangCai_8",
+        "🇭🇰HK_32 @WangCai_8",
+        "🇭🇰HK_33 @WangCai_8",
+        "🇭🇰HK_34 @WangCai_8",
+        "🇭🇰HK_35 @WangCai_8",
+        "🇭🇰HK_36 @WangCai_8",
+        "🇭🇰HK_37 @WangCai_8",
+        "🇭🇰HK_38 @WangCai_8",
+        "🇭🇰HK_39 @WangCai_8",
+        "🇭🇰HK_40 @WangCai_8",
+        "🇭🇰HK_41 @WangCai_8",
+        "🇭🇰HK_42 @WangCai_8",
+        "🇭🇰HK_43 @WangCai_8",
+        "🇭🇰HK_44 @WangCai_8",
+        "🇭🇰HK_45 @WangCai_8",
+        "🇭🇰HK_46 @WangCai_8",
+        "🇭🇰HK_47 @WangCai_8",
+        "🇭🇰HK_48 @WangCai_8",
+        "🇭🇰HK_49 @WangCai_8",
+        "🇭🇰HK_50 @WangCai_8",
+        "🇭🇰HK_51 @WangCai_8",
+        "🇭🇰HK_52 @WangCai_8",
+        "🇭🇰HK_53 @WangCai_8",
+        "🇭🇰HK_54 @WangCai_8",
+        "🇭🇰HK_55 @WangCai_8",
+        "🇭🇰HK_56 @WangCai_8",
+        "🇭🇰HK_57 @WangCai_8",
+        "🇭🇰HK_58 @WangCai_8",
+        "🇭🇰HK_59 @WangCai_8",
+        "🇭🇰HK_60 @WangCai_8",
+        "🇭🇰HK_61 @WangCai_8",
+        "🇭🇰HK_62 @WangCai_8",
+        "🇭🇰HK_63 @WangCai_8",
+        "🇭🇰HK_64 @WangCai_8",
+        "🇭🇰HK_65 @WangCai_8",
+        "🇭🇰HK_66 @WangCai_8",
+        "🇭🇰HK_67 @WangCai_8",
+        "🇭🇰HK_68 @WangCai_8",
+        "🇭🇰HK_69 @WangCai_8",
+        "🇭🇰HK_70 @WangCai_8",
+        "🇭🇰HK_71 @WangCai_8",
+        "🇭🇰HK_72 @WangCai_8",
+        "🇭🇰HK_73 @WangCai_8",
+        "🇭🇰HK_74 @WangCai_8",
+        "🇭🇰HK_75 @WangCai_8",
+        "🇭🇰HK_76 @WangCai_8",
+        "🇭🇰HK_77 @WangCai_8",
+        "🇭🇰HK_78 @WangCai_8",
+        "🇭🇰HK_79 @WangCai_8",
+        "🇭🇰HK_80 @WangCai_8",
+        "🇭🇰HK_81 @WangCai_8",
+        "🇭🇰HK_82 @WangCai_8",
+        "🇭🇰HK_83 @WangCai_8",
+        "🇭🇰HK_84 @WangCai_8",
+        "🇭🇰HK_85 @WangCai_8",
+        "🇭🇰HK_86 @WangCai_8",
+        "🇭🇰HK_87 @WangCai_8",
+        "🇭🇰HK_88 @WangCai_8",
+        "🇭🇰HK_89 @WangCai_8",
+        "🇭🇰HK_90 @WangCai_8",
+        "🇭🇰HK_91 @WangCai_8",
+        "🇭🇰HK_92 @WangCai_8",
+        "🇭🇰HK_93 @WangCai_8",
+        "🇭🇰HK_94 @WangCai_8",
+        "🇭🇰HK_95 @WangCai_8",
+        "🇭🇰HK_96 @WangCai_8",
+        "🇭🇰HK_97 @WangCai_8",
+        "🇭🇰HK_98 @WangCai_8",
+        "🇭🇰HK_99 @WangCai_8",
+        "🇭🇰HK_100 @WangCai_8",
+        "🇭🇰HK_101 @WangCai_8",
+        "🇭🇰HK_102 @WangCai_8",
+        "🇭🇰HK_103 @WangCai_8",
+        "🇭🇰HK_104 @WangCai_8",
+        "🇭🇰HK_105 @WangCai_8",
+        "🇭🇰HK_106 @WangCai_8",
+        "🇭🇰HK_107 @WangCai_8",
+        "🇭🇰HK_108 @WangCai_8",
+        "🇭🇰HK_109 @WangCai_8",
+        "🇭🇰HK_110 @WangCai_8",
+        "🇭🇰HK_111 @WangCai_8",
+        "🇭🇰HK_112 @WangCai_8",
+        "🇭🇰HK_113 @WangCai_8",
+        "🇭🇰HK_114 @WangCai_8",
+        "🇭🇰HK_115 @WangCai_8",
+        "🇭🇰HK_116 @WangCai_8",
+        "🇭🇰HK_117 @WangCai_8",
+        "🇭🇰HK_118 @WangCai_8",
+        "🇭🇰HK_119 @WangCai_8",
+        "🇭🇰HK_120 @WangCai_8",
+        "🇭🇰HK_121 @WangCai_8",
+        "🇭🇰HK_122 @WangCai_8",
+        "🇭🇰HK_123 @WangCai_8",
+        "🇭🇰HK_124 @WangCai_8",
+        "🇭🇰HK_125 @WangCai_8",
+        "🇭🇰HK_126 @WangCai_8",
+        "🇭🇰HK_127 @WangCai_8",
+        "🇭🇰HK_128 @WangCai_8",
+        "🇭🇰HK_129 @WangCai_8",
+        "🇭🇰HK_130 @WangCai_8",
+        "🇭🇰HK_131 @WangCai_8",
+        "🇭🇰HK_132 @WangCai_8",
+        "🇭🇰HK_133 @WangCai_8",
+        "🇭🇰HK_134 @WangCai_8",
+        "🇭🇰HK_135 @WangCai_8",
+        "🇭🇰HK_136 @WangCai_8",
+        "🇭🇰HK_137 @WangCai_8",
+        "🇭🇰HK_138 @WangCai_8",
+        "🇭🇰HK_139 @WangCai_8",
+        "🇭🇰HK_140 @WangCai_8",
+        "🇭🇰HK_141 @WangCai_8",
+        "🇭🇰HK_142 @WangCai_8",
+        "🇭🇰HK_143 @WangCai_8",
+        "🇭🇰HK_144 @WangCai_8",
+        "🇭🇰HK_145 @WangCai_8",
+        "🇭🇰HK_146 @WangCai_8",
+        "🇭🇰HK_147 @WangCai_8",
+        "🇭🇰HK_148 @WangCai_8",
+        "🇭🇰HK_149 @WangCai_8",
+        "🇭🇰HK_150 @WangCai_8",
+        "🇭🇰HK_151 @WangCai_8",
+        "🇭🇰HK_152 @WangCai_8",
+        "🇭🇰HK_153 @WangCai_8",
+        "🇭🇰HK_154 @WangCai_8",
+        "🇭🇰HK_155 @WangCai_8",
+        "🇭🇰HK_156 @WangCai_8",
+        "🇭🇰HK_157 @WangCai_8",
+        "🇭🇰HK_158 @WangCai_8",
+        "🇭🇰HK_159 @WangCai_8",
+        "🇭🇰HK_160 @WangCai_8",
+        "🇭🇰HK_161 @WangCai_8",
+        "🇭🇰HK_162 @WangCai_8",
+        "🇭🇰HK_163 @WangCai_8",
+        "🇭🇰HK_164 @WangCai_8",
+        "🇭🇰HK_165 @WangCai_8",
+        "🇭🇰HK_166 @WangCai_8",
+        "🇭🇰HK_167 @WangCai_8",
+        "🇭🇰HK_168 @WangCai_8",
+        "🇭🇰HK_169 @WangCai_8",
+        "🇭🇰HK_170 @WangCai_8",
+        "🇭🇰HK_171 @WangCai_8",
+        "🇭🇰HK_172 @WangCai_8",
+        "🇭🇰HK_173 @WangCai_8",
+        "🇭🇰HK_174 @WangCai_8",
+        "🇭🇰HK_175 @WangCai_8",
+        "🇭🇰HK_176 @WangCai_8",
+        "🇭🇰HK_177 @WangCai_8",
+        "🇭🇰HK_178 @WangCai_8",
+        "🇭🇰HK_179 @WangCai_8",
+        "🇭🇰HK_180 @WangCai_8",
+        "🇭🇰HK_181 @WangCai_8",
+        "🇭🇰HK_182 @WangCai_8",
+        "🇭🇰HK_183 @WangCai_8",
+        "🇭🇰HK_184 @WangCai_8",
+        "🇭🇰HK_185 @WangCai_8",
+        "🇭🇰HK_186 @WangCai_8",
+        "🇭🇰HK_187 @WangCai_8",
+        "🇭🇰HK_188 @WangCai_8",
+        "🇭🇰HK_189 @WangCai_8",
+        "🇭🇰HK_190 @WangCai_8",
+        "🇭🇰HK_191 @WangCai_8",
+        "🇭🇰HK_192 @WangCai_8",
+        "🇭🇰HK_193 @WangCai_8",
+        "🇭🇰HK_194 @WangCai_8",
+        "🇭🇰HK_195 @WangCai_8",
+        "🇭🇰HK_196 @WangCai_8",
+        "🇭🇰HK_197 @WangCai_8",
+        "🇭🇰HK_198 @WangCai_8",
+        "🇭🇰HK_199 @WangCai_8",
+        "🇭🇰HK_200 @WangCai_8",
+        "🇭🇰HK_201 @WangCai_8",
+        "🇭🇰HK_202 @WangCai_8",
+        "🇭🇰HK_203 @WangCai_8",
+        "🇭🇰HK_204 @WangCai_8",
+        "🇭🇰HK_205 @WangCai_8",
+        "🇭🇰HK_206 @WangCai_8",
+        "🇭🇰HK_207 @WangCai_8",
+        "🇭🇰HK_208 @WangCai_8",
+        "🇭🇰HK_209 @WangCai_8",
+        "🇭🇰HK_210 @WangCai_8",
+        "🇭🇰HK_211 @WangCai_8",
+        "🇭🇰HK_212 @WangCai_8",
+        "🇭🇰HK_213 @WangCai_8",
+        "🇭🇰HK_214 @WangCai_8",
+        "🇭🇰HK_215 @WangCai_8",
+        "🇭🇰HK_216 @WangCai_8",
+        "🇭🇰HK_217 @WangCai_8",
+        "🇭🇰HK_218 @WangCai_8",
+        "🇭🇰HK_219 @WangCai_8",
+        "🇭🇰HK_220 @WangCai_8",
+        "🇭🇰HK_221 @WangCai_8",
+        "🇭🇰HK_222 @WangCai_8",
+        "🇭🇰HK_223 @WangCai_8",
+        "🇭🇰HK_224 @WangCai_8",
+        "🇭🇰HK_225 @WangCai_8",
+        "🇭🇰HK_226 @WangCai_8",
+        "🇭🇰HK_227 @WangCai_8",
+        "🇭🇰HK_228 @WangCai_8",
+        "🇭🇰HK_229 @WangCai_8",
+        "🇭🇰HK_230 @WangCai_8",
+        "🇭🇰HK_231 @WangCai_8",
+        "🇭🇰HK_232 @WangCai_8",
+        "🇭🇰HK_233 @WangCai_8",
+        "🇭🇰HK_234 @WangCai_8",
+        "🇭🇰HK_235 @WangCai_8",
+        "🇭🇰HK_236 @WangCai_8",
+        "🇭🇰HK_237 @WangCai_8",
+        "🇭🇰HK_238 @WangCai_8",
+        "🇭🇰HK_239 @WangCai_8",
+        "🇭🇰HK_240 @WangCai_8",
+        "🇭🇰HK_241 @WangCai_8",
+        "🇭🇰HK_242 @WangCai_8",
+        "🇭🇰HK_243 @WangCai_8",
+        "🇭🇰HK_244 @WangCai_8",
+        "🇭🇰HK_245 @WangCai_8",
+        "🇭🇰HK_246 @WangCai_8",
+        "🇭🇰HK_247 @WangCai_8",
+        "🇭🇰HK_248 @WangCai_8",
+        "🇭🇰HK_249 @WangCai_8",
+        "🇭🇰HK_250 @WangCai_8",
+        "🇭🇰HK_251 @WangCai_8",
+        "🇭🇰HK_252 @WangCai_8",
+        "🇭🇰HK_253 @WangCai_8",
+        "🇭🇰HK_254 @WangCai_8",
+        "🇭🇰HK_255 @WangCai_8"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "direct_out"
+    },
+    {
+      "type": "block",
+      "tag": "block_out"
+    },
+    {
+      "type": "dns",
+      "tag": "dns_out"
+    }
+  ],
+  "route": {
+    "final": "urltest_out",
+    "find_process": true,
+    "auto_detect_interface": true,
+    "rules": [
+      {
+        "inbound": [
+          "mixed_in_direct"
+        ],
+        "outbound": "direct_out"
+      },
+      {
+        "inbound": [
+          "mixed_in_proxy"
+        ],
+        "outbound": "urltest_out"
+      },
+      {
+        "protocol": "dns",
+        "outbound": "dns_out"
+      },
+      {
+        "domain_suffix": [
+          "o4508911573663744.ingest.sentry.io"
+        ],
+        "outbound": "direct_out"
+      },
+      {
+        "domain_suffix": [
+          "speedtest.net"
+        ],
+        "outbound": "urltest_out"
+      },
+      {
+        "domain_suffix": [
+          "karing.app"
+        ],
+        "outbound": "direct_out"
+      },
+      {
+        "rule_set": [
+          "geosite:cn"
+        ],
+        "outbound": "direct_out"
+      },
+      {
+        "rule_set": [
+          "geoip:cn"
+        ],
+        "outbound": "direct_out"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct_out"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite:cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/KaringX/karing-ruleset/raw/sing/geo/geosite/cn.srs",
+        "download_detour": "urltest_out"
+      },
+      {
+        "tag": "geoip:cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/KaringX/karing-ruleset/raw/sing/geo/geoip/cn.srs",
+        "download_detour": "urltest_out"
+      }
+    ]
+  }
+}
