@@ -3,6 +3,8 @@ cloudflare.182682.xyz#优选域名1
 node.hubp.de#mingyu2
 mfa.gov.ua#乌克兰政府官网
 www.visa.cn#visa中国优选
+epam.com#epam优选
+salla.sa#salla优选
 time.is#官方优选1
 icook.hk#官方优选2
 icook.tw#官方优选3
